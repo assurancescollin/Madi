@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 interface HeroProps {
-  onStart: () => void;
+  onScrollToCards: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onStart }) => {
+export const Hero: React.FC<HeroProps> = ({ onScrollToCards }) => {
   return (
-    <section className="border-b border-neutral-200 bg-white py-24 sm:py-36">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl sm:text-6xl font-normal tracking-tight text-neutral-950 leading-[1.15]">
-          L’assurance pensée pour être limpide, humaine et accessible.
+    <section className="relative w-full min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] flex flex-col justify-between max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-12 pb-12 sm:pb-16">
+      {/* Centre : La phrase maîtresse occupant majestueusement la page */}
+      <div className="my-auto py-12 max-w-5xl">
+        <h1 className="text-4xl sm:text-7xl lg:text-8xl font-light tracking-tight text-neutral-950 leading-[1.05]">
+          L’assurance pensée pour être limpide, protectrice et durable.
         </h1>
+      </div>
 
-        <p className="mt-6 text-lg sm:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
-          Découvrez nos couvertures conçues pour protéger votre quotidien et votre avenir sans formalités superflues.
+      {/* Bas de page d'ouverture : petite phrase signature et lien fluide vers les cartes */}
+      <div className="pt-8 border-t border-neutral-200/80 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <p className="text-sm sm:text-base text-neutral-600 max-w-md leading-relaxed font-normal">
+          Habitation, automobile, santé, prévoyance et retraite. Des contrats épurés et essentiels, sans clauses superflues.
         </p>
 
-        <div className="mt-12">
-          <button
-            type="button"
-            onClick={onStart}
-            className="inline-flex items-center gap-2.5 rounded-full bg-neutral-950 px-7 py-3 text-xs font-medium text-white hover:bg-neutral-800 transition-colors cursor-pointer"
-          >
-            <span>Commencer</span>
-            <ArrowDown className="h-3.5 w-3.5" />
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onScrollToCards}
+          className="inline-flex items-center gap-3 text-xs sm:text-sm font-medium tracking-wide text-neutral-950 hover:text-neutral-500 transition-colors cursor-pointer group self-start sm:self-auto"
+        >
+          <span className="underline underline-offset-8 decoration-neutral-300 group-hover:decoration-neutral-950 transition-colors">
+            Découvrir les contrats
+          </span>
+          <ArrowDown className="w-4 h-4 animate-bounce" />
+        </button>
       </div>
     </section>
   );
